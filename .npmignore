@@ -1,0 +1,6 @@
+.gitignore
+.jshintrc
+.git
+example.processed.css
+npm-debug.log
+node_modules
