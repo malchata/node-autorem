@@ -11,10 +11,9 @@ This plugin borrows heavily in terms of design from the [`node-pixrem`](https://
 
 ### Usage
 
-So far, I've only tested using `autorem` in two different ways, and both require the installation if `postcss`. To install `autorem`, simply perform the following commands in your web project:
+Using `autorem` is quite simple. Add it to your `package.json` file, or just install it in your project directory using `npm` like so:
 
 ```
-npm install postcss
 npm install autorem
 ```
 
@@ -23,7 +22,7 @@ Once you've done that, you can use it in your node application with the followin
 ```
 "use strict";
 var fs = require("fs");
-var autorem = require("./lib/autorem");
+var autorem = require("autorem");
 var css = fs.readFileSync("./example.css", "utf8");
 var processedCss = autorem.process(css);
 
@@ -36,7 +35,7 @@ fs.writeFile("example.processed.css", processedCss, function(err){
 
 This assumes you have `example.css` running in the same folder as this code snippet. The `autorem.process` function call also accepts a second argument for some useful options (listed further on in this readme.)
 
-If you like task runners, then you probably want to use something like grunt. Here's a simple `Gruntfile.js` example that utilizes `grunt-contrib-watch` and processes `px` values on a stylesheet whenever it changes:
+If you like task runners, then you probably want to use something like grunt. Here's a simple `Gruntfile.js` example that utilizes `grunt-contrib-watch` to watch a CSS file for changes and employs `postcss` and `autorem` to process any `px` values found.
 
 ```
 module.exports = function(grunt){
